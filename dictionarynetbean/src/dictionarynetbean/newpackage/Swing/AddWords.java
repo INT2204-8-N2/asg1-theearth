@@ -127,6 +127,9 @@ public class AddWords extends javax.swing.JFrame {
             add2.setVisible(true);
             super.dispose();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "This word is already in the dictionary");
+        }
         
     }//GEN-LAST:event_checkActionPerformed
 

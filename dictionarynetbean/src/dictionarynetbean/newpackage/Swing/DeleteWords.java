@@ -29,7 +29,7 @@ public class DeleteWords extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         Cancel = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,7 +47,12 @@ public class DeleteWords extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Delete");
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Fill word to delete:");
 
@@ -64,7 +69,7 @@ public class DeleteWords extends javax.swing.JFrame {
                         .addGap(154, 154, 154)
                         .addComponent(Cancel)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(delete))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1)))
@@ -80,7 +85,7 @@ public class DeleteWords extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
-                    .addComponent(jButton2))
+                    .addComponent(delete))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -96,6 +101,15 @@ public class DeleteWords extends javax.swing.JFrame {
         // TODO add your handling code here:
         super.dispose();
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        String s = delete.getText();
+        Window1 w = new Window1();
+        if (w.search(s) == true) {
+            
+        }
+    }//GEN-LAST:event_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +166,7 @@ public class DeleteWords extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
