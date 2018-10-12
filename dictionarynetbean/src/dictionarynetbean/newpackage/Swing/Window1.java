@@ -212,7 +212,8 @@ public class Window1 extends javax.swing.JFrame {
                 String[] split = line.split("\\s",2);
                 words.word_target = split[0];
                 words.word_explain = split[1];
-                dictionary.map.put(words.word_target, words.word_explain);
+                if (words.word_explain != "")
+                    dictionary.map.put(words.word_target, words.word_explain);
             }
             read.close();
         }
@@ -251,7 +252,7 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         EditWords edit = new EditWords();
         edit.setVisible(true);
-        edit.setLocation(400,300);
+        edit.setLocation(400,400);
         edit.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

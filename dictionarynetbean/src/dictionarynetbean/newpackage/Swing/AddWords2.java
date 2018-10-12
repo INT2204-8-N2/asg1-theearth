@@ -117,7 +117,8 @@ public class AddWords2 extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        dictionaryExportToFile(area.getText()+ "\n");
+        
+        dictionaryExportToFile(area.getText()+ "\r\n");
         super.dispose();
     }//GEN-LAST:event_saveActionPerformed
 
