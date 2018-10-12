@@ -245,7 +245,25 @@ public class Window1 extends javax.swing.JFrame {
     
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
 
-        
+        String s = text.getText();
+        if(search(s)){
+            DefaultListModel model = new DefaultListModel();
+            model.addElement(s);
+            area.setText(dictionary.map.get(s));
+            jlist.setModel(model);
+        }
+        else{
+            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! \n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
+            if (click == JOptionPane.YES_OPTION) {
+                AddWords add = new AddWords();
+                add.setVisible(true);
+                add.setLocation(400,300);
+                add.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+            }
+        }
+    
+
+      
     }//GEN-LAST:event_searchActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
