@@ -5,6 +5,11 @@
  */
 package dictionarynetbean.newpackage.Swing;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Bùi Văn Bảo
@@ -92,6 +97,19 @@ public class DeleteWords extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void GhiToFile(String s) {
+        File file = new File("dictionaries.txt");
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(s);
+            bw.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
         
