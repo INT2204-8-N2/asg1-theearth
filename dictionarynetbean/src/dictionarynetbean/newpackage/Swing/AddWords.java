@@ -120,9 +120,7 @@ public class AddWords extends javax.swing.JFrame {
         String s = text.getText();
         Window1 w = new Window1();
         if (w.search(s) == false) {
-            //dictionaryExportToFile("\n");
-            dictionaryExportToFile(s);
-            dictionaryExportToFile("\t");
+            dictionaryExportToFile(s + "  ");
             AddWords2 add2 = new AddWords2();
             add2.setVisible(true);
             add2.setLocation(400,300);
@@ -175,25 +173,7 @@ public class AddWords extends javax.swing.JFrame {
             new AddWords().setVisible(true);
         });
     }  
-    
-     public void openAddWords() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddWords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new AddWords().setVisible(true);
-        });
-    }
-
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton check;
     private javax.swing.JButton jButton1;
