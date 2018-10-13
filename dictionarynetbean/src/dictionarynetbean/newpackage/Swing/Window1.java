@@ -240,7 +240,8 @@ public class Window1 extends javax.swing.JFrame {
             jlist.setModel(model);
         }
         else{
-            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! \n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
+            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! "
+                    + "\n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
             if (click == JOptionPane.YES_OPTION) {
                 AddWords add = new AddWords();
                 add.setVisible(true);
