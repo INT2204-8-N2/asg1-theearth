@@ -21,6 +21,7 @@ public class AddWords2 extends javax.swing.JFrame {
      */
     public AddWords2() {
         initComponents();
+
     }
     public void dictionaryExportToFile(String s) {
         File file = new File("dictionaries.txt");
@@ -182,4 +183,8 @@ public class AddWords2 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
+
+    private void unitData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

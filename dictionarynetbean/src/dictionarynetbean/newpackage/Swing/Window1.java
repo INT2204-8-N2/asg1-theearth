@@ -51,7 +51,7 @@ public class Window1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlist = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
+        speak = new javax.swing.JButton();
         search = new javax.swing.JButton();
         text = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -85,10 +85,10 @@ public class Window1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jlist);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/loa.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        speak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/loa.png"))); // NOI18N
+        speak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                speakActionPerformed(evt);
             }
         });
 
@@ -171,7 +171,7 @@ public class Window1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(426, 426, 426)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(speak, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,7 +187,7 @@ public class Window1 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(speak)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -245,7 +245,25 @@ public class Window1 extends javax.swing.JFrame {
     
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
 
-        
+        String s = text.getText();
+        if(search(s)){
+            DefaultListModel model = new DefaultListModel();
+            model.addElement(s);
+            area.setText(dictionary.map.get(s));
+            jlist.setModel(model);
+        }
+        else{
+            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! \n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
+            if (click == JOptionPane.YES_OPTION) {
+                AddWords add = new AddWords();
+                add.setVisible(true);
+                add.setLocation(400,300);
+                add.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+            }
+        }
+    
+
+      
     }//GEN-LAST:event_searchActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -265,9 +283,12 @@ public class Window1 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_exitActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void speakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String s = text.getText();
+        Speaking sp = new Speaking();
+        sp.speak(s);
+    }//GEN-LAST:event_speakActionPerformed
 
     private void jlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistValueChanged
         // TODO add your handling code here:
@@ -352,7 +373,6 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem delete;
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -364,6 +384,7 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JList jlist;
     private java.awt.Label label1;
     private javax.swing.JButton search;
+    private javax.swing.JButton speak;
     private javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 

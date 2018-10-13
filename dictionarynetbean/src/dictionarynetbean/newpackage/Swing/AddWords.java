@@ -125,6 +125,7 @@ public class AddWords extends javax.swing.JFrame {
             dictionaryExportToFile("\t");
             AddWords2 add2 = new AddWords2();
             add2.setVisible(true);
+            add2.setLocation(400,300);
             super.dispose();
         }
         else {

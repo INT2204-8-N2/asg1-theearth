@@ -104,11 +104,11 @@ public class DeleteWords extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        String s = delete.getText();
-        Window1 w = new Window1();
-        if (w.search(s) == true) {
-            
-        }
+//        String s = delete.getText();
+//        Window1 w = new Window1();
+//        if (w.search(s) == true) {
+//            
+//        }
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
