@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,9 @@ public class DeleteWords extends javax.swing.JFrame {
     /**
      * Creates new form DeleteWords
      */
+     Window1 win = new Window1();
+    AddWords adds = new AddWords();
+    
     public DeleteWords() {
         initComponents();
     }
@@ -32,16 +36,16 @@ public class DeleteWords extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        text = new javax.swing.JTextField();
         Cancel = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textActionPerformed(evt);
             }
         });
 
@@ -68,16 +72,16 @@ public class DeleteWords extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addComponent(Cancel)
                         .addGap(18, 18, 18)
                         .addComponent(delete))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +90,7 @@ public class DeleteWords extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
@@ -110,10 +114,10 @@ public class DeleteWords extends javax.swing.JFrame {
         }
     }
     
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
@@ -122,11 +126,21 @@ public class DeleteWords extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-//        String s = delete.getText();
-//        Window1 w = new Window1();
-//        if (w.search(s) == true) {
-//            
-//        }
+        String s = text.getText();
+        if(win.search(s)){
+            win.dictionary.map.remove(s);
+            GhiToFile("");
+            win.dictionary.map.forEach((String key,String value)->
+            {             
+                adds.dictionaryExportToFile(key + " " + win.dictionary.map.get(key) + "\r\n");
+            }
+            );
+            JOptionPane.showMessageDialog(null, "Đã xóa");
+            super.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Không tìm thấy từ cần xóa!");
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
@@ -164,28 +178,10 @@ public class DeleteWords extends javax.swing.JFrame {
         });
     }
     
-    public void openDeleteWords() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddWords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new DeleteWords().setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
     private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 }

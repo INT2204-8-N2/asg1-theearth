@@ -56,11 +56,14 @@ public class Window1 extends javax.swing.JFrame {
         text = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         area = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         edit = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         add = new javax.swing.JMenuItem();
         delete = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exit = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -74,10 +77,14 @@ public class Window1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dictionary");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("TỪ ĐIỂN ANH VIỆT");
+        jLabel2.setFont(new java.awt.Font("Sitka Small", 3, 25)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("TỪ ĐIỂN ANH - VIỆT");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 49));
 
+        jlist.setBackground(new java.awt.Color(204, 204, 255));
         jlist.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jlistValueChanged(evt);
@@ -85,12 +92,15 @@ public class Window1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jlist);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 94, 178, 286));
+
         speak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/loa.png"))); // NOI18N
         speak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 speakActionPerformed(evt);
             }
         });
+        getContentPane().add(speak, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 52, 35, -1));
 
         search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/Search (1).png"))); // NOI18N
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -98,23 +108,40 @@ public class Window1 extends javax.swing.JFrame {
                 searchActionPerformed(evt);
             }
         });
+        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 50, 30, 30));
 
         text.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 textCaretUpdate(evt);
             }
         });
+        text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textActionPerformed(evt);
+            }
+        });
+        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 49, 140, 30));
 
         area.setEditable(false);
+        area.setBackground(new java.awt.Color(255, 255, 204));
         area.setColumns(20);
         area.setLineWrap(true);
         area.setRows(5);
         area.setWrapStyleWord(true);
         jScrollPane2.setViewportView(area);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 94, 413, 288));
+
+        jLabel1.setText("Search:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 24, -1, -1));
+
+        jLabel3.setBackground(new java.awt.Color(0, 153, 255));
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 400));
+
         edit.setText("Menu");
 
-        jMenuItem2.setText("Edit");
+        jMenuItem2.setText("Edit word");
         jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +150,7 @@ public class Window1 extends javax.swing.JFrame {
         });
         edit.add(jMenuItem2);
 
-        add.setText("Add");
+        add.setText("Add word");
         add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,13 +159,14 @@ public class Window1 extends javax.swing.JFrame {
         });
         edit.add(add);
 
-        delete.setText("Delete");
+        delete.setText("Delete word");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
         edit.add(delete);
+        edit.add(jSeparator1);
 
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -151,52 +179,6 @@ public class Window1 extends javax.swing.JFrame {
         jMenuBar1.add(edit);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(141, 141, 141))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(426, 426, 426)
-                        .addComponent(speak, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(speak)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(17, 17, 17)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,6 +204,8 @@ public class Window1 extends javax.swing.JFrame {
         }
     }
     private void unitData() {
+        dictionary.map.clear();
+        jlist.clearSelection();
         insertFromFile();
         DefaultListModel model= new DefaultListModel();
         dictionary.map.forEach((String key,String value)->
@@ -246,7 +230,10 @@ public class Window1 extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
 
         String s = text.getText();
-        if(search(s)){
+        if(s.equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập từ cần tìm!");
+        }
+        else if(search(s)){
             DefaultListModel model = new DefaultListModel();
             model.addElement(s);
             area.setText(dictionary.map.get(s));
@@ -259,19 +246,18 @@ public class Window1 extends javax.swing.JFrame {
                 add.setVisible(true);
                 add.setLocation(400,300);
                 add.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+                unitData();
             }
         }
-    
-
-      
     }//GEN-LAST:event_searchActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         EditWords edit = new EditWords();
         edit.setVisible(true);
-        edit.setLocation(400,400);
+        edit.setLocation(400,300);
         edit.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        unitData();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -293,6 +279,7 @@ public class Window1 extends javax.swing.JFrame {
     private void jlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistValueChanged
         // TODO add your handling code here:
         area.setText(dictionary.map.get(jlist.getSelectedValue()));
+        //text.setText((String)jlist.getSelectedValue());
     }//GEN-LAST:event_jlistValueChanged
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -301,7 +288,7 @@ public class Window1 extends javax.swing.JFrame {
         add.setVisible(true);
         add.setLocation(400,300);
         add.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        unitData();
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -310,7 +297,7 @@ public class Window1 extends javax.swing.JFrame {
         delete.setVisible(true);
         delete.setLocation(400,300);
         delete.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        unitData();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void textCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textCaretUpdate
@@ -326,7 +313,12 @@ public class Window1 extends javax.swing.JFrame {
         }
         );
         jlist.setModel(model);
+        area.setText("");
     }//GEN-LAST:event_textCaretUpdate
+
+    private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,7 +354,7 @@ public class Window1 extends javax.swing.JFrame {
                 Window1 win = new Window1();
                 win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 win.setVisible(true);
-                win.setLocation(400, 300);
+                win.setLocation(300, 200);
             }
         });
     }
@@ -374,13 +366,16 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exit;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JList jlist;
     private java.awt.Label label1;
     private javax.swing.JButton search;
