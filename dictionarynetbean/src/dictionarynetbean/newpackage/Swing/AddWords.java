@@ -17,24 +17,13 @@ import javax.swing.JOptionPane;
  * @author Bùi Văn Bảo
  */
 public class AddWords extends javax.swing.JFrame {
+    DataBase data = new DataBase();
 
     /**
      * Creates new form AddWords
      */
     public AddWords() {
         initComponents();
-    }
-    public void dictionaryExportToFile(String s) {
-        File file = new File("dictionaries.txt");
-        try {
-            FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(s);
-            bw.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -118,9 +107,8 @@ public class AddWords extends javax.swing.JFrame {
     private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
         // TODO add your handling code here:
         String s = text.getText();
-        Window1 w = new Window1();
-        if (w.search(s) == false) {
-            dictionaryExportToFile(s + "  ");
+        if (data.search(s) == false) {
+//            data.insert(s, "a");
             AddWords2 add2 = new AddWords2();
             add2.setVisible(true);
             add2.setLocation(400,300);
@@ -132,6 +120,10 @@ public class AddWords extends javax.swing.JFrame {
         
     }//GEN-LAST:event_checkActionPerformed
 
+    public String texxt(){
+        return text.getText();
+    }
+    
     private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textActionPerformed

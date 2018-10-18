@@ -20,8 +20,7 @@ public class DeleteWords extends javax.swing.JFrame {
     /**
      * Creates new form DeleteWords
      */
-     Window1 win = new Window1();
-    AddWords adds = new AddWords();
+    DataBase data = new DataBase();
     
     public DeleteWords() {
         initComponents();
@@ -101,19 +100,6 @@ public class DeleteWords extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void GhiToFile(String s) {
-        File file = new File("dictionaries.txt");
-        try {
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(s);
-            bw.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
     private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
         // TODO add your handling code here:
         
@@ -127,14 +113,8 @@ public class DeleteWords extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
         String s = text.getText();
-        if(win.search(s)){
-            win.dictionary.map.remove(s);
-            GhiToFile("");
-            win.dictionary.map.forEach((String key,String value)->
-            {             
-                adds.dictionaryExportToFile(key + " " + win.dictionary.map.get(key) + "\r\n");
-            }
-            );
+        if(data.search(s)){
+            data.delete(s);
             JOptionPane.showMessageDialog(null, "Đã xóa");
             super.dispose();
         }

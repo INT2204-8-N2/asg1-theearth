@@ -67,7 +67,9 @@ public class EditWords extends javax.swing.JFrame {
         });
 
         area.setColumns(20);
+        area.setLineWrap(true);
         area.setRows(5);
+        area.setWrapStyleWord(true);
         jScrollPane1.setViewportView(area);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -139,22 +141,12 @@ public class EditWords extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    Window1 win = new Window1();
-    AddWords adds = new AddWords();
-    DeleteWords del = new DeleteWords();
+    DataBase data = new DataBase();
     
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here
         String s = text.getText();
-        win.dictionary.map.remove(s);
-        win.dictionary.map.put(s, area.getText());
-        del.GhiToFile("");
-        win.dictionary.map.forEach((String key,String value)->
-        {             
-            adds.dictionaryExportToFile(key + " " + win.dictionary.map.get(key) + "\r\n");
-        }
-        );
+        data.update(s, area.getText());
         super.dispose();
     }//GEN-LAST:event_updateActionPerformed
 
@@ -169,8 +161,8 @@ public class EditWords extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(win.search(text.getText())){
-            area.setText(win.dictionary.map.get(text.getText()));
+        if(data.search(text.getText())){
+            area.setText(data.Explain(text.getText()));
         }
         else
             JOptionPane.showMessageDialog(null, "Không tìm thấy từ!");
