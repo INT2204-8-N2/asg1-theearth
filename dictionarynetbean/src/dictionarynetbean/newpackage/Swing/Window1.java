@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class Window1 extends javax.swing.JFrame {
     Dictionary dictionary = new Dictionary();
+    DataBase data = new DataBase();
     /**
      * Creates new form Window
      */
@@ -54,9 +55,8 @@ public class Window1 extends javax.swing.JFrame {
         speak = new javax.swing.JButton();
         search = new javax.swing.JButton();
         text = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        area = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        area = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         edit = new javax.swing.JMenu();
@@ -122,22 +122,19 @@ public class Window1 extends javax.swing.JFrame {
         });
         getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 49, 140, 30));
 
-        area.setEditable(false);
-        area.setBackground(new java.awt.Color(255, 255, 204));
-        area.setColumns(20);
-        area.setLineWrap(true);
-        area.setRows(5);
-        area.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(area);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 94, 413, 288));
-
         jLabel1.setText("Search:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 24, -1, -1));
 
-        jLabel3.setBackground(new java.awt.Color(0, 153, 255));
+        area.setBackground(new java.awt.Color(255, 255, 204));
+        area.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        area.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        area.setOpaque(true);
+        getContentPane().add(area, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 98, 421, 286));
+        area.getAccessibleContext().setAccessibleParent(area);
+
+        jLabel3.setBackground(new java.awt.Color(51, 153, 255));
         jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 400));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
 
         edit.setText("Menu");
 
@@ -206,7 +203,8 @@ public class Window1 extends javax.swing.JFrame {
     private void unitData() {
         dictionary.map.clear();
         jlist.clearSelection();
-        insertFromFile();
+        //insertFromFile();
+        //data.addMapdata();
         DefaultListModel model= new DefaultListModel();
         dictionary.map.forEach((String key,String value)->
         {
@@ -215,17 +213,6 @@ public class Window1 extends javax.swing.JFrame {
         );
         jlist.setModel(model);
     }
-    boolean search(String s){
-        boolean check = false;
-        Set<String> keySet = dictionary.map.keySet();
-        for (String i : keySet) {
-            if (s.equals(i)) {
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
     
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
 
@@ -233,10 +220,10 @@ public class Window1 extends javax.swing.JFrame {
         if(s.equals("")){
             JOptionPane.showMessageDialog(null, "Nhập từ cần tìm!");
         }
-        else if(search(s)){
+        else if(data.search(s)){
             DefaultListModel model = new DefaultListModel();
             model.addElement(s);
-            area.setText(dictionary.map.get(s));
+            area.setText(data.Explain(s));
             jlist.setModel(model);
         }
         else{
@@ -272,15 +259,18 @@ public class Window1 extends javax.swing.JFrame {
 
     private void speakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakActionPerformed
         // TODO add your handling code here:
-        String s = text.getText();
+        String s = null;
+        if(jlist.getSelectedValue() != null){
+            s = (String)jlist.getSelectedValue();
+        }
+        else s = text.getText();
         Speaking sp = new Speaking();
         sp.speak(s);
     }//GEN-LAST:event_speakActionPerformed
 
     private void jlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistValueChanged
         // TODO add your handling code here:
-        area.setText(dictionary.map.get(jlist.getSelectedValue()));
-        //text.setText((String)jlist.getSelectedValue());
+        area.setText(data.Explain((String)jlist.getSelectedValue()));
     }//GEN-LAST:event_jlistValueChanged
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -305,12 +295,10 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultListModel model = new DefaultListModel();
         String s = text.getText();
+        dictionary.map = data.searchtd(s);
         dictionary.map.forEach((String key,String value)->
         {
-            if (key.length() >= s.length())
-                if (s.equals(key.substring(0, s.length()))) {
-                    model.addElement(key);
-            }
+            model.addElement(key);
         }
         );
         jlist.setModel(model);
@@ -362,7 +350,7 @@ public class Window1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem add;
-    private javax.swing.JTextArea area;
+    private javax.swing.JLabel area;
     private javax.swing.JMenuItem delete;
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exit;
@@ -375,7 +363,6 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JList jlist;
     private java.awt.Label label1;

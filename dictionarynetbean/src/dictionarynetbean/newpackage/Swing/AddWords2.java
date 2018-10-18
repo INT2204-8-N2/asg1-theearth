@@ -16,25 +16,14 @@ import javax.swing.JOptionPane;
  * @author Bùi Văn Bảo
  */
 public class AddWords2 extends javax.swing.JFrame {
-
+    DataBase data = new DataBase();
+    AddWords add = new AddWords();
     /**
      * Creates new form AddWords2
      */
     public AddWords2() {
         initComponents();
 
-    }
-    public void dictionaryExportToFile(String s) {
-        File file = new File("dictionaries.txt");
-        try {
-            FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(s);
-            bw.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -103,7 +92,7 @@ public class AddWords2 extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        dictionaryExportToFile(area.getText() + "\r\n");
+        data.insert(add.texxt(), area.getText());
         JOptionPane.showMessageDialog(null, "Đã  lưu!");
         super.dispose();
     }//GEN-LAST:event_saveActionPerformed
