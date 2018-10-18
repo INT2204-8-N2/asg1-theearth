@@ -6,6 +6,7 @@
 package dictionarynetbean.newpackage.Swing;
 
 import dictionarynetbean.newpackage.Swing.Window1;
+import dictionarynetbean.newpackage.Word;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,6 +40,10 @@ public class AddWords extends javax.swing.JFrame {
         check = new javax.swing.JButton();
         text = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        save = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        area = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -65,38 +70,59 @@ public class AddWords extends javax.swing.JFrame {
             }
         });
 
+        save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Fill explain word:");
+
+        area.setColumns(20);
+        area.setRows(5);
+        jScrollPane1.setViewportView(area);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(check)
-                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(check))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(32, 32, 32)
+                        .addComponent(save)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(check)
-                    .addComponent(jButton1))
-                .addGap(33, 33, 33))
+                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(check))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(save)))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("");
@@ -108,11 +134,7 @@ public class AddWords extends javax.swing.JFrame {
         // TODO add your handling code here:
         String s = text.getText();
         if (data.search(s) == false) {
-//            data.insert(s, "a");
-            AddWords2 add2 = new AddWords2();
-            add2.setVisible(true);
-            add2.setLocation(400,300);
-            super.dispose();
+            JOptionPane.showMessageDialog(null, "This word is not in the dictionary");       
         }
         else {
             JOptionPane.showMessageDialog(null, "This word is already in the dictionary");
@@ -120,9 +142,6 @@ public class AddWords extends javax.swing.JFrame {
         
     }//GEN-LAST:event_checkActionPerformed
 
-    public String texxt(){
-        return text.getText();
-    }
     
     private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
         // TODO add your handling code here:
@@ -132,6 +151,13 @@ public class AddWords extends javax.swing.JFrame {
         // TODO add your handling code here:
         super.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+        data.insert(text.getText() ,area.getText());
+        JOptionPane.showMessageDialog(null, "Đã  lưu!");
+        super.dispose();
+    }//GEN-LAST:event_saveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,9 +193,13 @@ public class AddWords extends javax.swing.JFrame {
     }  
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea area;
     private javax.swing.JButton check;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton save;
     private javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 }
