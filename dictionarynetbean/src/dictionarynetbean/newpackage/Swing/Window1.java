@@ -50,7 +50,6 @@ public class Window1 extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        area = new javax.swing.JLabel();
         speak = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -60,6 +59,9 @@ public class Window1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        area = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         edit = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -83,12 +85,6 @@ public class Window1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        area.setBackground(new java.awt.Color(255, 255, 204));
-        area.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        area.setOpaque(true);
-        jPanel1.add(area, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 540, 310));
-        area.getAccessibleContext().setAccessibleParent(area);
 
         speak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/volum.png"))); // NOI18N
         speak.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +136,13 @@ public class Window1 extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 30, -1));
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 260, 0));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+
+        area.setBackground(new java.awt.Color(255, 255, 204));
+        area.setOpaque(true);
+        jScrollPane3.setViewportView(area);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 140, 539, 310));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 480));
 
@@ -378,6 +381,8 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JList jlist;
     private java.awt.Label label1;
