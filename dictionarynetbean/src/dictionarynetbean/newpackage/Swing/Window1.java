@@ -115,11 +115,6 @@ public class Window1 extends javax.swing.JFrame {
                 textCaretUpdate(evt);
             }
         });
-        text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textActionPerformed(evt);
-            }
-        });
         getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 49, 140, 30));
 
         jLabel1.setText("Search:");
@@ -304,10 +299,6 @@ public class Window1 extends javax.swing.JFrame {
         jlist.setModel(model);
         area.setText("");
     }//GEN-LAST:event_textCaretUpdate
-
-    private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textActionPerformed
 
     /**
      * @param args the command line arguments
