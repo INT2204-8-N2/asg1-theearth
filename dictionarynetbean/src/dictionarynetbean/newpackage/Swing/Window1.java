@@ -49,6 +49,9 @@ public class Window1 extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         label1 = new java.awt.Label();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         speak = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class Window1 extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         add = new javax.swing.JMenuItem();
         delete = new javax.swing.JMenuItem();
+        tran = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exit = new javax.swing.JMenuItem();
 
@@ -78,6 +82,12 @@ public class Window1 extends javax.swing.JFrame {
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dictionary");
@@ -176,6 +186,14 @@ public class Window1 extends javax.swing.JFrame {
             }
         });
         edit.add(delete);
+
+        tran.setText("Translate");
+        tran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tranActionPerformed(evt);
+            }
+        });
+        edit.add(tran);
         edit.add(jSeparator1);
 
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/close.png"))); // NOI18N
@@ -325,6 +343,14 @@ public class Window1 extends javax.swing.JFrame {
         area.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tranActionPerformed
+        // TODO add your handling code here:
+        Translate tran = new Translate();
+        tran.setVisible(true);
+        tran.setLocation(400,300);
+        tran.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_tranActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,7 +400,10 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -389,6 +418,7 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JButton search;
     private javax.swing.JButton speak;
     private javax.swing.JTextField text;
+    private javax.swing.JMenuItem tran;
     // End of variables declaration//GEN-END:variables
 
 }
