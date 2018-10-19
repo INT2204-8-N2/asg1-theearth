@@ -37,29 +37,44 @@ public class AddWords extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        check = new javax.swing.JButton();
         text = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        save = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         area = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        save = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Fill word to add:");
-
-        check.setText("Check");
-        check.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 11, 103, -1));
+        jLabel1.getAccessibleContext().setAccessibleName("");
 
         text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textActionPerformed(evt);
+            }
+        });
+        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 36, 214, 27));
+
+        jLabel2.setText("Fill explain word:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 69, -1, -1));
+
+        area.setColumns(20);
+        area.setLineWrap(true);
+        area.setRows(5);
+        area.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(area);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 101, 400, 150));
+
+        save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
             }
         });
 
@@ -70,77 +85,31 @@ public class AddWords extends javax.swing.JFrame {
             }
         });
 
-        save.setText("Save");
-        save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Fill explain word:");
-
-        area.setColumns(20);
-        area.setRows(5);
-        jScrollPane1.setViewportView(area);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(check))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(32, 32, 32)
-                        .addComponent(save)))
-                .addContainerGap(51, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(223, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(75, 75, 75)
+                .addComponent(save)
+                .addGap(60, 60, 60))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(check))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(save)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(267, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(save)
+                    .addComponent(jButton1))
+                .addGap(30, 30, 30))
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
-        // TODO add your handling code here:
-        String s = text.getText();
-        if (data.search(s) == false) {
-            JOptionPane.showMessageDialog(null, "This word is not in the dictionary");       
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "This word is already in the dictionary");
-        }
-        
-    }//GEN-LAST:event_checkActionPerformed
 
     
     private void textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textActionPerformed
@@ -154,9 +123,32 @@ public class AddWords extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        data.insert(text.getText() ,area.getText());
-        JOptionPane.showMessageDialog(null, "Đã  lưu!");
-        super.dispose();
+        String s = text.getText();
+        if (data.search(s) == false) {
+            if(area.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Điền nghĩa của từ để thêm!");
+            }
+            else{
+                data.insert(text.getText() ,area.getText());
+                JOptionPane.showMessageDialog(null, "Đã  lưu!");
+                super.dispose();
+            }
+        }
+        else {
+            int click = JOptionPane.showConfirmDialog(null, "Từ bạn cần thêm đã có trong từ điển! "
+                + "\n Bạn có muốn thay thế từ trong từ điển không?", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (click == JOptionPane.YES_OPTION) {
+                if(area.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Điền nghĩa của từ để thêm!");
+                }
+                else{
+                    data.delete(text.getText());
+                    data.insert(text.getText(), area.getText());
+                    JOptionPane.showMessageDialog(null, "Đã  lưu!");
+                    super.dispose();
+                }
+            }
+        }
     }//GEN-LAST:event_saveActionPerformed
 
     /**
@@ -194,10 +186,10 @@ public class AddWords extends javax.swing.JFrame {
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea area;
-    private javax.swing.JButton check;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton save;
     private javax.swing.JTextField text;
