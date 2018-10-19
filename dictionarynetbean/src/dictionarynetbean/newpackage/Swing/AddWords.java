@@ -145,7 +145,10 @@ public class AddWords extends javax.swing.JFrame {
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         String s = text.getText();
-        if (data.search(s) == false) {
+        if(s.equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập từ cần thêm!");
+        }
+        else if (data.search(s) == false) {
             if(area.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Điền nghĩa của từ để thêm!");
             }
