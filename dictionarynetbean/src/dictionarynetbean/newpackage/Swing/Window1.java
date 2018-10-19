@@ -49,15 +49,19 @@ public class Window1 extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         label1 = new java.awt.Label();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        speak = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlist = new javax.swing.JList();
-        speak = new javax.swing.JButton();
-        search = new javax.swing.JButton();
         text = new javax.swing.JTextField();
+        search = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         area = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         edit = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -79,10 +83,22 @@ public class Window1 extends javax.swing.JFrame {
         setTitle("Dictionary");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Sitka Small", 3, 25)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        speak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/volum.png"))); // NOI18N
+        speak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speakActionPerformed(evt);
+            }
+        });
+        jPanel1.add(speak, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 40, 40));
+
+        jLabel2.setFont(new java.awt.Font("Sitka Small", 3, 27)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/Layer 0.png"))); // NOI18N
         jLabel2.setText("TỪ ĐIỂN ANH - VIỆT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 49));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 390, 70));
 
         jlist.setBackground(new java.awt.Color(204, 204, 255));
         jlist.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -92,15 +108,14 @@ public class Window1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jlist);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 94, 178, 286));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 310));
 
-        speak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/loa.png"))); // NOI18N
-        speak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                speakActionPerformed(evt);
+        text.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textCaretUpdate(evt);
             }
         });
-        getContentPane().add(speak, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 52, 35, -1));
+        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 30));
 
         search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/Search (1).png"))); // NOI18N
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -108,31 +123,32 @@ public class Window1 extends javax.swing.JFrame {
                 searchActionPerformed(evt);
             }
         });
-        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 50, 30, 30));
-
-        text.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                textCaretUpdate(evt);
-            }
-        });
-        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 49, 140, 30));
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 30, 30));
 
         jLabel1.setText("Search:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 24, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/close.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 30, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 260, 0));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         area.setBackground(new java.awt.Color(255, 255, 204));
-        area.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        area.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         area.setOpaque(true);
-        getContentPane().add(area, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 98, 421, 286));
-        area.getAccessibleContext().setAccessibleParent(area);
+        jScrollPane3.setViewportView(area);
 
-        jLabel3.setBackground(new java.awt.Color(51, 153, 255));
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 140, 539, 310));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 480));
 
         edit.setText("Menu");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/edit.png"))); // NOI18N
         jMenuItem2.setText("Edit word");
         jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +158,7 @@ public class Window1 extends javax.swing.JFrame {
         });
         edit.add(jMenuItem2);
 
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/add.png"))); // NOI18N
         add.setText("Add word");
         add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +168,7 @@ public class Window1 extends javax.swing.JFrame {
         });
         edit.add(add);
 
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/delete.png"))); // NOI18N
         delete.setText("Delete word");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +178,7 @@ public class Window1 extends javax.swing.JFrame {
         edit.add(delete);
         edit.add(jSeparator1);
 
+        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/close.png"))); // NOI18N
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,31 +228,6 @@ public class Window1 extends javax.swing.JFrame {
         jlist.setModel(model);
     }
     
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-
-        String s = text.getText();
-        if(s.equals("")){
-            JOptionPane.showMessageDialog(null, "Nhập từ cần tìm!");
-        }
-        else if(data.search(s)){
-            DefaultListModel model = new DefaultListModel();
-            model.addElement(s);
-            area.setText(data.Explain(s));
-            jlist.setModel(model);
-        }
-        else{
-            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! "
-                    + "\n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
-            if (click == JOptionPane.YES_OPTION) {
-                AddWords add = new AddWords();
-                add.setVisible(true);
-                add.setLocation(400,300);
-                add.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
-                unitData();
-            }
-        }
-    }//GEN-LAST:event_searchActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         EditWords edit = new EditWords();
@@ -251,17 +245,6 @@ public class Window1 extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_exitActionPerformed
-
-    private void speakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakActionPerformed
-        // TODO add your handling code here:
-        String s = null;
-        if(jlist.getSelectedValue() != null){
-            s = (String)jlist.getSelectedValue();
-        }
-        else s = text.getText();
-        Speaking sp = new Speaking();
-        sp.speak(s);
-    }//GEN-LAST:event_speakActionPerformed
 
     private void jlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistValueChanged
         // TODO add your handling code here:
@@ -299,6 +282,48 @@ public class Window1 extends javax.swing.JFrame {
         jlist.setModel(model);
         area.setText("");
     }//GEN-LAST:event_textCaretUpdate
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+
+        String s = text.getText();
+        if(s.equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập từ cần tìm!");
+        }
+        else if(data.search(s)){
+            DefaultListModel model = new DefaultListModel();
+            model.addElement(s);
+            area.setText(data.Explain(s));
+            jlist.setModel(model);
+        }
+        else{
+            int click = JOptionPane.showConfirmDialog(null, "Không tìm thấy từ trong từ điển! "
+                + "\n Bạn có muốn thêm từ vào từ điển không?", "Not Found", JOptionPane.YES_NO_OPTION);
+            if (click == JOptionPane.YES_OPTION) {
+                AddWords add = new AddWords();
+                add.setVisible(true);
+                add.setLocation(400,300);
+                add.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                unitData();
+            }
+        }
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void speakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakActionPerformed
+        // TODO add your handling code here:
+        String s = null;
+        if(jlist.getSelectedValue() != null){
+            s = (String)jlist.getSelectedValue();
+        }
+        else s = text.getText();
+        Speaking sp = new Speaking();
+        sp.speak(s);
+    }//GEN-LAST:event_speakActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        text.setText("");
+        area.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,15 +370,19 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem delete;
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JList jlist;
     private java.awt.Label label1;
