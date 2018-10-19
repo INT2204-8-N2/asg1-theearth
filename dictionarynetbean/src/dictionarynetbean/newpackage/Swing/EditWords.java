@@ -79,7 +79,7 @@ public class EditWords extends javax.swing.JFrame {
         area.setWrapStyleWord(true);
         jScrollPane1.setViewportView(area);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 124, 409, 113));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 124, 409, 130));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/Search (1).png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {

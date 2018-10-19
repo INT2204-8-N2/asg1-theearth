@@ -64,7 +64,9 @@ public class AddWords extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 69, -1, -1));
 
         area.setColumns(20);
+        area.setLineWrap(true);
         area.setRows(5);
+        area.setWrapStyleWord(true);
         jScrollPane1.setViewportView(area);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 101, 400, 150));
