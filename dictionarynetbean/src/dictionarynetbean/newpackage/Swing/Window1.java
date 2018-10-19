@@ -65,6 +65,7 @@ public class Window1 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         area = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         edit = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -154,6 +155,14 @@ public class Window1 extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 140, 539, 310));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/traanslate_1.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 50, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 480));
 
         edit.setText("Menu");
@@ -187,6 +196,7 @@ public class Window1 extends javax.swing.JFrame {
         });
         edit.add(delete);
 
+        tran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/traanslate_1.png"))); // NOI18N
         tran.setText("Translate");
         tran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,46 +221,27 @@ public class Window1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void insertFromFile() {
-        try{
-            FileReader fr = new FileReader("dictionaries.txt");
-            BufferedReader read = new BufferedReader(fr);
-            String line = new String();
-        
 
-            while((line = read.readLine()) != null){
-                Word words = new Word();
-                String[] split = line.split("\\s",2);
-                words.word_target = split[0];
-                words.word_explain = split[1];
-                if (words.word_explain != "")
-                    dictionary.map.put(words.word_target, words.word_explain);
-            }
-            read.close();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
     private void unitData() {
         dictionary.map.clear();
         jlist.clearSelection();
-        //insertFromFile();
-        //data.addMapdata();
         DefaultListModel model= new DefaultListModel();
+        String s = text.getText();
+        dictionary.map = data.searchtd(s);
         dictionary.map.forEach((String key,String value)->
         {
             model.addElement(key);
         }
         );
         jlist.setModel(model);
+        area.setText("");
     }
     
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         EditWords edit = new EditWords();
         edit.setVisible(true);
-        edit.setLocation(400,300);
+        edit.setLocation(400,200);
         edit.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         unitData();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -273,7 +264,7 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddWords add = new AddWords();
         add.setVisible(true);
-        add.setLocation(400,300);
+        add.setLocation(400,200);
         add.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         unitData();
     }//GEN-LAST:event_addActionPerformed
@@ -347,9 +338,17 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         Translate tran = new Translate();
         tran.setVisible(true);
-        tran.setLocation(400,300);
+        tran.setLocation(400,200);
         tran.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_tranActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Translate tran = new Translate();
+        tran.setVisible(true);
+        tran.setLocation(400,200);
+        tran.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +384,7 @@ public class Window1 extends javax.swing.JFrame {
                 Window1 win = new Window1();
                 win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 win.setVisible(true);
-                win.setLocation(300, 200);
+                win.setLocation(200, 100);
             }
         });
     }
@@ -397,6 +396,7 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exit;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
