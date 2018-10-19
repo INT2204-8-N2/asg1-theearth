@@ -37,19 +37,24 @@ public class EditWords extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         area = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        text.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textCaretUpdate(evt);
+            }
+        });
         text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textActionPerformed(evt);
             }
         });
-        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 60, 136, 28));
+        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 60, 160, 28));
 
         jLabel1.setText("Word:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 40, -1, -1));
@@ -81,32 +86,38 @@ public class EditWords extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 124, 409, 130));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setText("Edit Word:");
+
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dictionarynetbean/newpackage/Swing/Search (1).png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 60, 30, 28));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Edit Word:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLabel3)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton1)
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 300));
@@ -117,10 +128,18 @@ public class EditWords extends javax.swing.JFrame {
     
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here
-        String s = text.getText();
-        data.update(s, area.getText());
-        JOptionPane.showMessageDialog(null, "Sửa từ thành công!");
-        super.dispose();
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập từ cần sửa!");
+        }
+        else if(area.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập mô tả cho từ!");
+        }
+        else {
+            String s = text.getText();
+            data.update(s, area.getText());
+            JOptionPane.showMessageDialog(null, "Sửa từ thành công!");
+            super.dispose();
+        }
     }//GEN-LAST:event_updateActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -134,12 +153,20 @@ public class EditWords extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(data.search(text.getText())){
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Nhập từ cần sửa!");
+        }
+        else if(data.search(text.getText())){
             area.setText(data.Explain(text.getText()));
         }
         else
             JOptionPane.showMessageDialog(null, "Không tìm thấy từ!");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textCaretUpdate
+        // TODO add your handling code here:
+        area.setText("");
+    }//GEN-LAST:event_textCaretUpdate
 
     /**
      * @param args the command line arguments
