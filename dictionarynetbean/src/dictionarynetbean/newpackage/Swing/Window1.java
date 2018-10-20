@@ -221,7 +221,7 @@ public class Window1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+@SuppressWarnings("unchecked")
     private void unitData() {
         dictionary.map.clear();
         jlist.clearSelection();
@@ -277,7 +277,7 @@ public class Window1 extends javax.swing.JFrame {
         delete.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         unitData();
     }//GEN-LAST:event_deleteActionPerformed
-
+@SuppressWarnings("unchecked")
     private void textCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textCaretUpdate
         // TODO add your handling code here:
         DefaultListModel model = new DefaultListModel();
@@ -291,7 +291,7 @@ public class Window1 extends javax.swing.JFrame {
         jlist.setModel(model);
         area.setText("");
     }//GEN-LAST:event_textCaretUpdate
-
+@SuppressWarnings("unchecked")
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
 
         String s = text.getText();
