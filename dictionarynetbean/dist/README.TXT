@@ -1,3 +1,4 @@
+Thêm file dictionaryvv.db ở folder gốc bỏ vô folder dict để chạy chương trình
 ========================
 BUILD OUTPUT DESCRIPTION
 ========================
