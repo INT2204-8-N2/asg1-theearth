@@ -1,7 +1,6 @@
 ========================
 BUILD OUTPUT DESCRIPTION
 ========================
-Lấy thêm dictionaryvv.db từ thư mục gốc vào dict để chạy từ điển.
 
 When you build an Java application project that has a main class, the IDE
 automatically copies all of the JAR
